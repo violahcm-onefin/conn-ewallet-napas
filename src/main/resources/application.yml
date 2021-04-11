@@ -1,0 +1,19 @@
+server:
+  port: 8061
+  
+napas:
+  oauth2:
+    url: https://dps-staging.napas.com.vn/api/oauth/token?
+    grant_type: password
+    client_id: ONEFINCE
+    client_secret: D0A81EDC85F5E1317815E96485FFD96E
+    username: ONEFINCE
+    password: ONEFINCE@2021
+    userAgent: Napas
+  url:
+    linkCard: https://dps-staging.napas.com.vn/api/rest/version/1/merchant/{0}/order/{1}/transaction/{2}
+ 
+    
+logging:
+  level:
+    root: info
