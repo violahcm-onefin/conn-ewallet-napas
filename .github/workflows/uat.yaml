@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - uat
+  workflow_dispatch:
+jobs:
+  echo_env:
+    runs-on: sit
+    steps:
+      - name: build_maven
+        run: |
+          echo "${{github.workflow_sha}}"
+  build_image:
+    needs: echo_env
+    uses: onefin/pipeline-as-code/.github/workflows/build.yaml@master
+    with:
+      service-name: "conn-ewallet-napas"
+      environment: "uat"
+      framework: "maven"
+  deploy_image:
+    needs: build_image
+    uses: onefin/pipeline-as-code/.github/workflows/deploy.yaml@master
+    with:
+      service-name: "conn-ewallet-napas"
+      environment: "uat"
